@@ -1,64 +1,7 @@
 // ===========================================================================
-//  EDIT YOUR SITE HERE
-//  Everything you can read on the page lives in this one object. Change the
-//  text between the quotes, save, and refresh the browser. `img` can be a
-//  local path ("images/photo.jpg") or any URL. `href` is where a panel links.
+//  Homepage machinery. Edit your text in content.js, not here.
 // ===========================================================================
-const CONTENT = {
-  brand: "Romi · Studio",
-
-  // Top-right menu. Each item: [label, link]
-  nav: [
-    ["Looming", "#work"],
-    ["Minust", "#about"],
-    ["Kontakt", "#contact"],
-  ],
-
-  introTitle: "Valitud projektid",
-  introSub: "Vaade hiljutistele projektidele — vaatamiseks hoia hiir pildil, täpsemalt tutvumiseks kliki.",
-
-  footerLeft: "© 2026 Romi-Liis",
-  // footerRight: "Auto-advancing every 5s",
-
-  rotateSeconds: 5, // how long each project stays highlighted
-
-  projects: [
-  {
-    title: "Käru",
-    tag: "Väljasõit Pärnusse",
-    href: "#",
-    img: "images/1.jpg",
-  },
-  {
-    title: "Kummut",
-    tag: "Restaureerimisprojekt",
-    href: "#",
-    img: "images/2.jpg",
-  },
-  {
-    title: "Ilus naine",
-    tag: "Väljaskäigud sõpradega",
-    href: "#",
-    img: "images/3.jpg",
-  },
-  {
-    title: "Uputus",
-    tag: "Tormiga Kassisaba poes",
-    href: "#",
-    img: "images/4.jpg",
-  },
-  {
-    title: "Tandem",
-    tag: "Uusim rõõmuallikas",
-    href: "#",
-    img: "images/5.jpg",
-  },
-  ],
-};
-
-// ===========================================================================
-//  Below this line is the machinery — you shouldn't need to touch it.
-// ===========================================================================
+// CONTENT is defined in content.js (loaded before this file).
 const PROJECTS = CONTENT.projects;
 const ROTATE_MS = (CONTENT.rotateSeconds || 5) * 1000;
 
@@ -79,7 +22,7 @@ const gallery = document.querySelector(".gallery");
 const panels = PROJECTS.map((p, i) => {
   const a = document.createElement("a");
   a.className = "panel";
-  a.href = p.href;
+  a.href = `project.html?id=${encodeURIComponent(p.id)}`;
   a.setAttribute("aria-label", `${p.title} — ${p.tag}`);
   a.innerHTML = `
     <img class="panel__img" src="${p.img}" alt="${p.title}" loading="lazy" />

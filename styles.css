@@ -3,7 +3,7 @@
   --bg-soft: #17171a;
   --ink: #f4f2ee;
   --ink-dim: #9a978f;
-  --accent: #d8b26e;
+  --accent: #d98aa8;
   --panel-gap: 10px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --rotate-ms: 5000ms;
@@ -219,8 +219,158 @@ main {
   letter-spacing: 0.04em;
 }
 
+a.mark {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------- Project page ---------- */
+.project {
+  display: block; /* override the global flex-column main used on the homepage */
+  flex: 1 0 auto; /* grow to fit content, never shrink it below its size */
+  max-width: 1360px;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(10px, 3vw, 30px) clamp(20px, 5vw, 56px) 60px;
+}
+
+.project__back {
+  display: inline-block;
+  color: var(--ink-dim);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 34px;
+  transition: color 0.3s var(--ease);
+}
+
+.project__back:hover {
+  color: var(--ink);
+}
+
+.project__tag {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.project__title {
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.03;
+  letter-spacing: -0.01em;
+  margin-bottom: 30px;
+}
+
+/* Two-column layout: story on the left, hover-driven photo on the right. */
+.project__split {
+  display: grid;
+  grid-template-columns: 1.9fr 1.1fr;
+  gap: clamp(28px, 5vw, 64px);
+  align-items: start;
+  margin-top: 8px;
+}
+
+.project__story {
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: #d9d6cf;
+}
+
+.project__story p + p {
+  margin-top: 1.1em;
+}
+
+/* Marked words in the text */
+.hotword {
+  color: #d98aa8;
+  cursor: pointer;
+  border-bottom: 1px dotted rgba(217, 138, 168, 0.35);
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.hotword:hover {
+  color: #eaa9c2;
+  border-bottom-color: rgba(217, 138, 168, 0.7);
+}
+
+/* The photo pane sticks in view while the text scrolls past it. */
+.project__pane {
+  position: sticky;
+  top: 28px;
+}
+
+.pane-figure {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-soft);
+  aspect-ratio: 3 / 4;
+}
+
+.pane-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: paneFade 0.45s var(--ease);
+}
+
+@keyframes paneFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Album: collage of all designated photos, after the text. */
+.project__album {
+  columns: 3 220px;
+  column-gap: 14px;
+  margin-top: clamp(48px, 8vw, 90px);
+}
+
+.album-item {
+  margin: 0 0 14px;
+  break-inside: avoid;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+.album-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.6s var(--ease), filter 0.6s var(--ease);
+  filter: grayscale(0.15);
+}
+
+.album-item:hover img {
+  transform: scale(1.03);
+  filter: grayscale(0);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 720px) {
+  .project__album {
+    columns: 2 140px;
+  }
+  .project__split {
+    grid-template-columns: 1fr;
+  }
+  .project__pane {
+    position: static;
+    order: -1; /* show the photo above the text on narrow screens */
+    margin-bottom: 24px;
+  }
+  .pane-figure {
+    aspect-ratio: 3 / 2;
+  }
   .gallery {
     flex-direction: column;
   }
