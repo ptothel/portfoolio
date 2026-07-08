@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- All text below is filled in from the CONTENT object in script.js -->
+  <header class="site-header">
+    <div class="mark" id="mark"></div>
+    <nav class="site-nav" id="nav"></nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1 class="intro-title" id="introTitle"></h1>
+      <p class="intro-sub" id="introSub"></p>
+    </section>
+
+    <!-- Gallery: panels are generated from the CONTENT.projects array in script.js -->
+    <section class="gallery" id="work" aria-label="Featured projects"></section>
+  </main>
+
+  <footer class="site-footer">
+    <span id="footerLeft"></span>
+    <span class="hint" id="footerRight"></span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
