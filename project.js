@@ -72,6 +72,9 @@ if (!project) {
   const albumSrcs = [...new Set(hotwords.map((h) => h.dataset.src))];
   const album = $("projAlbum");
   const plain = project.plainAlbum;
+  if (project.hideAlbum) {
+    album.remove();
+  } else {
   album.innerHTML = albumSrcs
     .map(
       (src, i) =>
@@ -136,4 +139,5 @@ if (!project) {
     else if (e.key === "ArrowRight") showLb(lbIdx + 1);
   });
   } // end if (!plain)
+  } // end else (hideAlbum)
 }

@@ -19,10 +19,11 @@ const CONTENT = {
   about: {
     title: "Minust",
     tag: "",
-    img: "images/1.jpeg", // side-pane cover photo
+    img: "images/Minust.jpeg", // side-pane cover photo
     plainAlbum: true, // no numbers, no lightbox — just the photo collage
+    hideAlbum: true, // don't show the photo grid at the bottom
     story: [
-      "Kirjuta siia enda tutvustus. Sõna märkimiseks kasuta kuju {{sõna|images/rada.jpg}} ja hõljutamisel ilmub kõrvale määratud pilt.",
+"Hei! Mina olen {{Romi-Liis|images/Romi-Liis.jpeg}}.",
     ],
   },
 
