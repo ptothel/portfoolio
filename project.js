@@ -6,13 +6,10 @@ const $ = (id) => document.getElementById(id);
 $("mark").textContent = CONTENT.brand;
 $("footerLeft").textContent = CONTENT.footerLeft;
 $("footerRight").textContent = CONTENT.footerRight;
-$("nav").innerHTML = CONTENT.nav
-  .map(([label, href]) => `<a href="${href}">${label}</a>`)
-  .join("");
-
-// Find the requested project
+// Find the requested project — or use an override set by about.html etc.
 const id = new URLSearchParams(location.search).get("id");
-const project = CONTENT.projects.find((p) => p.id === id);
+const project =
+  window.__PROJECT_OVERRIDE__ || CONTENT.projects.find((p) => p.id === id);
 
 const paneImg = $("paneImg");
 
@@ -71,13 +68,72 @@ if (!project) {
   });
 
   // Album: a collage of every designated photo, shown after the text.
+  // Numbered in the chronological order the words appear in the story.
   const albumSrcs = [...new Set(hotwords.map((h) => h.dataset.src))];
-  $("projAlbum").innerHTML = albumSrcs
+  const album = $("projAlbum");
+  const plain = project.plainAlbum;
+  album.innerHTML = albumSrcs
     .map(
-      (src) =>
-        `<figure class="album-item"><img src="${src}" alt="${
-          project.title || ""
-        }" loading="lazy" /></figure>`
+      (src, i) =>
+        `<figure class="album-item${plain ? " album-item--plain" : ""}" data-index="${i}">
+           ${plain ? "" : `<span class="album-num">${i + 1}</span>`}
+           <img src="${src}" alt="${project.title || ""}" loading="lazy" />
+         </figure>`
     )
     .join("");
+
+  // --- Lightbox with prev/next (skipped when plainAlbum is set) ----------
+  if (!plain) {
+  const lightbox = document.createElement("div");
+  lightbox.className = "lightbox";
+  lightbox.innerHTML = `
+    <button class="lightbox__close" aria-label="Sulge">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" aria-label="Eelmine">‹</button>
+    <img class="lightbox__img" alt="" />
+    <button class="lightbox__nav lightbox__nav--next" aria-label="Järgmine">›</button>
+    <span class="lightbox__counter"></span>
+  `;
+  document.body.appendChild(lightbox);
+
+  const lbImg = lightbox.querySelector(".lightbox__img");
+  const lbCounter = lightbox.querySelector(".lightbox__counter");
+  let lbIdx = 0;
+
+  function showLb(i) {
+    lbIdx = (i + albumSrcs.length) % albumSrcs.length;
+    lbImg.src = albumSrcs[lbIdx];
+    lbCounter.textContent = `${lbIdx + 1} / ${albumSrcs.length}`;
+  }
+  function openLb(i) {
+    showLb(i);
+    lightbox.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeLb() {
+    lightbox.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  album.querySelectorAll(".album-item").forEach((el) => {
+    el.addEventListener("click", () => openLb(Number(el.dataset.index)));
+  });
+  lightbox.querySelector(".lightbox__close").addEventListener("click", closeLb);
+  lightbox.querySelector(".lightbox__nav--prev").addEventListener("click", (e) => {
+    e.stopPropagation();
+    showLb(lbIdx - 1);
+  });
+  lightbox.querySelector(".lightbox__nav--next").addEventListener("click", (e) => {
+    e.stopPropagation();
+    showLb(lbIdx + 1);
+  });
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLb();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("is-open")) return;
+    if (e.key === "Escape") closeLb();
+    else if (e.key === "ArrowLeft") showLb(lbIdx - 1);
+    else if (e.key === "ArrowRight") showLb(lbIdx + 1);
+  });
+  } // end if (!plain)
 }

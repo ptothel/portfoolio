@@ -12,10 +12,6 @@ $("introTitle").textContent = CONTENT.introTitle;
 $("introSub").textContent = CONTENT.introSub;
 $("footerLeft").textContent = CONTENT.footerLeft;
 $("footerRight").textContent = CONTENT.footerRight;
-$("nav").innerHTML = CONTENT.nav
-  .map(([label, href]) => `<a href="${href}">${label}</a>`)
-  .join("");
-
 const gallery = document.querySelector(".gallery");
 
 // --- Build panels ----------------------------------------------------------
