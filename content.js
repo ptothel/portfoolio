@@ -23,7 +23,10 @@ const CONTENT = {
     plainAlbum: true, // no numbers, no lightbox — just the photo collage
     hideAlbum: true, // don't show the photo grid at the bottom
     story: [
-"Hei! Mina olen {{Romi-Liis|images/Romi-Liis.jpeg}}.",
+"Hei! Mina olen {{Romi-Liis|images/Romi-Liis.jpeg}}, 23-aastane pealehakkaja. Lõin selle lehe siin, et koguda ühte kohta jäädvustusi ja mälestusi oma erinevatest ettevõtmistest ja projektidest; põhiliselt enda jaoks, aga ka teistega jagamiseks.",
+"Õppisin kaks aastat Tartu Ülikoolis ja seejärel ühe vahetussemestri Granada Ülikoolis hispaania keelt ja kirjandust, mille järel avastasin, et tunnen kogu selle filoloogilise teooria juures väga palju puudust käelisest, füüsilisest tegevusest. Ja mitte ainult hobikorras, vaid suuremal skaalal. Nii võtsime ühes elukaaslasega endale väljakutse leida meie koju üks kõpitsemist vajav kummut ja seda restaureerima hakata. Sellest saab lugeda täpsemalt juba kummutile pühendatud alalehel, aga igatahes inspireeris see projekt mind looma ka seda veebilehte.",
+"Vabal ajal meeldib mulle nii Eestis kui ka välismaal ringi rännata, armastan spontaanseid seiklusi. Naudin väga näiteks rabas käimist, matkamist ja telkimist (kuigi kardan paaniliselt pea kõiki loomi, linde, putukaid ja muid tegelasi). Mulle meeldib kokata--küpsetada, kinos ja niisama väljas käia, luuletada, meisterdada, savi voolida, pildistada, tandemrattaga sõita, kleepse valmistada ja joonistada--maalida (kuigi selles ma liiga hea ei ole). Ühes laagris olen aidanud ka töötube korraldada; ühel aastal sai tehtud pärlitega käevõrusid ja teisel aastal hoopis taimetrükki.",
+"Gümnaasiumis läbisin valikaine raames plaatimise kursuse, tänu millele oman nüüd plaatija neljanda taseme kutset. Sügisel loodan õppima asuda Tallinna Tehnoloogiakolledžisse, kas pehme mööbli valmistaja või restauraator--viimistleja erialale.",
     ],
   },
 
@@ -105,7 +108,7 @@ const CONTENT = {
         "Järgmisena sai ette võetud kapi pealispinna {{peitsimine|images/kummut/peitsimine.jpg}}. Selleks oli tarvis puidupeitsi ja täitsa tavalist puhast svammi. Ühest kihist piisas.",
         "Kui sellega ühel pool, sai liikuda kummuti ülejäänud pinna juurde. Kõigepealt tuli see {{kruntida|images/kummut/kruntida.jpg}}; seda tegin värvirulli ja pintsliga.",
         "Kui kruntvärv kuivanud oli, sai lõpuks ometi asuda värvimise kallale. Kuna kummutil on omajagu kumerusi ja väikeseid detaile, läks lisaks värvirullile kasutusse ka {{piiisike pintsel|images/kummut/piiisikestpintslit.jpg}}, millega töötamine võttis lõppude lõpuks {{väga kaua aega|images/kummut/vagakauaaega.jpg}}, kuid mida mulle sellest, ja seljavalust, hoolimata teha meeldis. Värvi kandsin peale kaks kihti.",
-        "Ja kui siis kõik see tehtud oli, jäi üle vaid kogu kummut lakkida; pealispind kolme ja ülejäänud kapp kahe kihiga. Selle jaoks olid tarvilikud puidulakk ja mingisugune täitsa tavaline riie, millega see peale kanda. Ning niimoodi see lõpuks valmis saigi, … juulil.",
+        "Ja kui siis kõik see tehtud oli, jäi üle vaid kogu kummut lakkida; pealispind kolme ja ülejäänud kapp kahe kihiga. Selle jaoks olid tarvilikud puidulakk ja mingisugune täitsa tavaline riie, millega see peale kanda. Ning niimoodi see lõpuks {{valmis|images/kummut/valmis.png}} saigi, 13. juulil.",
       ],
     },
     {
